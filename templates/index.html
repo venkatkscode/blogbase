@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<style type="text/css">
+	.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  }
+</style>
+
+	{% for post in object_list %}
+
+		<article class="media content-section" style="background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;">
+
+			<div class="media-body">
+			    <div class="article-metadata">
+			    	<h2><a class="article-title" href="{% url 'detail' post.id %}">{{ post.title }}</a></h2>
+			      <small class="text-muted">{{ post.timestamp }}</small>
+			        <a class="mr-2" style="font-size: 0.8em;">By ADMIN</a>
+			    </div>
+
+		    	<p class="article-content">{{ post.content|truncatechars:100 }}</p>
+		    	<a class="btn btn-primary" href="{% url 'detail' post.id %}">View</a>
+			</div>
+		</article>
+		{% endfor %}
+{% endblock content %}

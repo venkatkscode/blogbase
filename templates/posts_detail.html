@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<style type="text/css">
+	.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  }
+</style>
+
+<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2"  style="font-size: 0.8em;">By ADMIN</a>
+		      <small class="text-muted">{{ instance.timestamp }}</small>
+		    <h2 class="article-title" style="font-size: 55px;">{{ instance.title }}</h2>
+		  </div>
+		  <img src="{{instance.image.url}}" class="img-responsive" style="height: 300px;max-width:610px; ">
+		  <p class="article-content">{{ instance.content }}</p>
+	</article>
+<br>
+<div id="wpac-comment"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Comment', id: 21497});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<a href="https://widgetpack.com" class="wpac-cr">Comments System WIDGET PACK</a>
+
+
+{% endblock content %}
+
